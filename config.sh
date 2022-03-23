@@ -60,6 +60,7 @@ do
 	printf "\nNotes: \nIn order to use the third option, you need to config your pc before\nType help to get a description for each option.\n"
 	while true
 	do
+		quitProgram=0
 		printf "> "
 		read bool
 		case $bool in
@@ -76,6 +77,7 @@ do
 				break
 				;;
 			4)
+				quitProgram=1
 				break
 				;;
 			5)
@@ -91,9 +93,15 @@ do
 				;;
 		esac
 	done
-	printf "\nComplete!\n\n"
+	if [ $quitProgram -eq 1 ]
+	then
+		printf "\nThanks for using the program! ;)\n\n"
+		break
+	fi
+
 	while true
 	do
+		printf "\nComplete!\n\n"
 		printf "Want to continue using the program? y/n\n> "
 		read boolS
 		case $boolS in
