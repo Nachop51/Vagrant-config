@@ -1,6 +1,24 @@
 #!/bin/bash
 # Aux functions
 
+changeDir () {
+	while true
+	do
+		successful=0
+		printf " \n---- Change directory ----\n"
+		printf "Note: use this like the command cd\n\ncd > "
+		read Cd
+		cd "$Cd" & successful=1
+		if [ successful -eq 1 ]
+		then
+			pwd
+		else
+			printf "Invalid directory"
+		fi
+
+	done
+}
+
 newPc () {
 	printf " ----- New pc configuration! -----\n"
 	printf "Enter your user name:\n> "
@@ -11,7 +29,7 @@ newPc () {
 	git config --global user.email "$useremail"
 	for (( i=1; i>0; i++ ))
 	do
-		echo "Want to save your data? (Credential helper) answer 1 for yes or 0 for no"
+		printf "Want to save your data? (Credential helper) answer 1 for yes or 0 for no\n> "
 		read bool
 		if (($bool == 1 || $bool == 0))
 		then
@@ -22,11 +40,15 @@ newPc () {
 			elif (($bool == 0))
 			then
 				break
-		fi
+			fi
 		else
 			echo "Insert a valid number please."
 		fi
 	done
+	if [ $bool -eq 1 ]
+	then
+		git push
+	fi
 }
 
 gitClone () {
@@ -56,6 +78,7 @@ printf "\n ----- Welcome to Git Config! -----\n\n"
 while true;
 do
 	printf "Please type a number to choose an option:\n"
+	printf "Choose 0 to change directory (Use this in order to go to the desired directory)\n"
 	printf "1. New pc config\n2. Git clone config\n3. New repository\n4. Exit the program\n"
 	printf "\nNotes: \nIn order to use the third option, you need to config your pc before\nType help to get a description for each option.\n"
 	while true
@@ -64,6 +87,10 @@ do
 		printf "> "
 		read bool
 		case $bool in
+			0)
+				changeDir
+				break
+				;;
 			1)
 				newPc
 				break
