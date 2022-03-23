@@ -78,7 +78,7 @@ printf "\n ----- Welcome to Git Config! -----\n\n"
 while true;
 do
 	printf "Please type a number to choose an option:\n"
-	printf "Choose 0 to change directory (Use this in order to go to the desired directory)\n"
+	printf "Choose 0 to change directory (Use this in order to go to desired directory)\n"
 	printf "1. New pc config\n2. Git clone config\n3. New repository\n4. Exit the program\n"
 	printf "\nNotes: \nIn order to use the third option, you need to config your pc before\nType help to get a description for each option.\n"
 	while true
@@ -108,7 +108,7 @@ do
 				break
 				;;
 			5)
-				printf "1. New pc config 2. Git clone config 3. New repository or 4 to exit the program\n"
+				printf "0. Option to change directory\n1. New pc config 2. Git clone config 3. New repository or 4 to exit the program\n"
 				;;
 			help)
 				printf "\n --- New pc ---\nIt asks you for your username and email in order to set the git config, also ask you if you want to save your credentials.\n"
