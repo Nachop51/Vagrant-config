@@ -2,18 +2,20 @@
 # Aux functions
 
 changeDir () {
+	printf "Broken functionallity"
+	success=1
 	while true
 	do
-		successful=0
 		printf " \n---- Change directory ----\n"
 		printf "Note: use this like the command cd\n\ncd > "
 		read Cd
-		cd "$Cd" & successful=1
-		if [ successful -eq 1 ]
+		cd "$Cd" & success=0
+		if [ $success -eq 0 ]
 		then
+			printf "ASDASDSADSA"
 			pwd
 		else
-			printf "Invalid directory"
+			pwd
 		fi
 
 	done
@@ -78,7 +80,7 @@ printf "\n ----- Welcome to Git Config! -----\n\n"
 while true;
 do
 	printf "Please type a number to choose an option:\n"
-	printf "Choose 0 to change directory (Use this in order to go to desired directory)\n"
+	# printf "Choose 0 to change directory (Use this in order to go to desired directory)\n"
 	printf "1. New pc config\n2. Git clone config\n3. New repository\n4. Exit the program\n"
 	printf "\nNotes: \nIn order to use the third option, you need to config your pc before\nType help to get a description for each option.\n"
 	while true
@@ -104,6 +106,8 @@ do
 				break
 				;;
 			4)
+			quit)
+			q)
 				quitProgram=1
 				break
 				;;
